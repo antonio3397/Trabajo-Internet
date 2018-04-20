@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -28,6 +29,10 @@ public class Documento implements Serializable {
     private Date fecha_entrega;
     private String estado;
     private String tipo;
+    @ManyToOne
+    private Evento evento;
+    @ManyToOne 
+    private Usuario usuario;
 
     public Long getId() {
         return id;

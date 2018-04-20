@@ -7,10 +7,13 @@ package trabajo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -46,6 +49,12 @@ public class Usuario implements Serializable {
     private String responsable_legal;
     private String metodo_pago;
     private Integer cuota_total;
+    @OneToMany (mappedBy = "usuario")
+    @JoinColumn(nullable = true)
+    List<Documento> documentos;
+    @OneToMany (mappedBy = "usuario")
+    @JoinColumn (nullable = true)
+    List<Comentario> comentarios;
 
     public Long getId() {
         return id;

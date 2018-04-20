@@ -7,11 +7,14 @@ package trabajo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
 /**
@@ -34,6 +37,13 @@ public class Evento implements Serializable {
     private String localizacion;
     private String descripcion;
     private Integer precio;
+    @OneToMany(mappedBy = "evento")
+    @JoinColumn(nullable = true)
+    private List<Documento> documentos;
+    @OneToMany (mappedBy = "evento")
+    @JoinColumn (nullable = true)
+    private List<Comentario> comentarios;
+    
 
     public Long getId() {
         return id;
