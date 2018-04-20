@@ -8,10 +8,12 @@ package trabajo;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -27,31 +29,46 @@ public class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(nullable=false)
     private String contrasenia;
+    @Column(nullable=false)
     private String NIF;
+    @Column(nullable=false)
     private String email;
+    @Column(nullable=false)
     private String nombre;
+    @Column(nullable=false)
     private String apellidos;
+    @Column(nullable=false)
     private String sexo;
     @Temporal(TemporalType.DATE)
+    @Column(nullable=false)
     private Date fecha_nacimiento;
+    @Column(nullable=false)
     private Integer codigo_postal;
+    @Column(nullable=false)
     private String direccion;
+    @Column(nullable=false)
     private String provincia;
+    @Column(nullable=false)
     private String Localidad;
     @Temporal(TemporalType.DATE)
+    @Column(nullable=false)
     private Date fecha_ingreso;
     @Temporal(TemporalType.DATE)
     private Date fecha_baja;
+    @Column(nullable=false)
+    private Integer cuota_total;
     private Integer telefono;
     private Integer movil;
     private String responsable_legal;
     private String metodo_pago;
-    private Integer cuota_total;
     
     @OneToMany(mappedBy = "Usuario")
     private List<Inscripcion> inscripciones;
-            
+    
+    @ManyToOne
+    private Perfil perfiles;
 
     public Long getId() {
         return id;
