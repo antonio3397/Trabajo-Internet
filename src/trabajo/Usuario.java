@@ -69,6 +69,9 @@ public class Usuario implements Serializable {
     
     @ManyToOne
     private Perfil perfiles;
+    
+    @OneToMany (mappedBy="perfiles")
+    private List<Pago_cuota> pago;
 
     public Long getId() {
         return id;
