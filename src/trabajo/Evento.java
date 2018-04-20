@@ -44,6 +44,7 @@ public class Evento implements Serializable {
     @JoinColumn (nullable = true)
     private List<Comentario> comentarios;
     
+    
 
     public Long getId() {
         return id;

@@ -55,6 +55,7 @@ public class Usuario implements Serializable {
     @OneToMany (mappedBy = "usuario")
     @JoinColumn (nullable = true)
     List<Comentario> comentarios;
+    
 
     public Long getId() {
         return id;

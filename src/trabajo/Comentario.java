@@ -35,6 +35,7 @@ public class Comentario implements Serializable {
     private Evento evento;
     @ManyToOne
     private Usuario usuario;
+    
 
     public Long getId() {
         return id;
