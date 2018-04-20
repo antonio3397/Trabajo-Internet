@@ -6,10 +6,12 @@
 package trabajo;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -22,6 +24,9 @@ public class Perfil implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long rol;
+    
+    @OneToMany (mappedBy="perfiles")
+    private List<Usuario> usuarios;
 
     public Long getId() {
         return rol;
