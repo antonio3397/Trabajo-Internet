@@ -64,7 +64,6 @@ public class Usuario implements Serializable {
     private Integer movil;
     private String responsable_legal;
     private String metodo_pago;
-    private Integer cuota_total;
   
     @OneToMany (mappedBy = "usuario")
     @JoinColumn(nullable = true)
