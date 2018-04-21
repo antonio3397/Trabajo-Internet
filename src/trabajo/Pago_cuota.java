@@ -28,6 +28,14 @@ public class Pago_cuota implements Serializable {
     @ManyToOne
     private Usuario usuarios;
 
+    public void setCantidad_pagada(Integer cantidad_pagada) {
+        this.cantidad_pagada = cantidad_pagada;
+    }
+
+    public Integer getCantidad_pagada() {
+        return cantidad_pagada;
+    }
+
     public Long getId() {
         return id;
     }
