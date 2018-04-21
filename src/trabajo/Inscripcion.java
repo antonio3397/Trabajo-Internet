@@ -6,45 +6,30 @@
 package trabajo;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
+import javax.persistence.ManyToOne;
 
+/**
+ *
+ * @author migue
+ */
 @Entity
-public class Evento implements Serializable {
+public class Inscripcion implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(nullable = false)
-    private String titulo;
-    @Column (nullable = false)
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date fecha;
-    @Column (nullable = false)
-    private String localizacion;
-    private String descripcion;
-    private Integer precio;
-  
-    @OneToMany(mappedBy = "evento")
-    @JoinColumn(nullable = true)
-    private List<Documento> documentos;
-  
-    @OneToMany (mappedBy = "evento")
-    @JoinColumn (nullable = true)
-    private List<Comentario> comentarios;
     
-    @OneToMany(mappedBy = "evento")
-    private List<Inscripcion> inscripciones;
-
+     
+    @ManyToOne
+    private Usuario usuario;
+    
+    @ManyToOne
+    private Evento evento;
 
     public Long getId() {
         return id;
@@ -64,10 +49,10 @@ public class Evento implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Evento)) {
+        if (!(object instanceof Inscripcion)) {
             return false;
         }
-        Evento other = (Evento) object;
+        Inscripcion other = (Inscripcion) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -76,7 +61,7 @@ public class Evento implements Serializable {
 
     @Override
     public String toString() {
-        return "trabajo.Evento[ id=" + id + " ]";
+        return "trabajo.Inscripcion[ id=" + id + " ]";
     }
     
 }
