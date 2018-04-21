@@ -13,7 +13,7 @@ import javax.persistence.Id;
 
 /**
  *
- * @author Apocalypsis
+ * @author Scuadrado
  */
 @Entity
 public class Seccion implements Serializable {
