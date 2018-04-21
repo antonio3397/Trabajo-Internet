@@ -11,9 +11,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-/**
+/*
  *
- * @author Scuadrado v2
+ * @author Scuadrado
  */
 @Entity
 public class Seccion implements Serializable {
