@@ -13,6 +13,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
@@ -63,8 +64,16 @@ public class Usuario implements Serializable {
     private Integer movil;
     private String responsable_legal;
     private String metodo_pago;
+    private Integer cuota_total;
+  
+    @OneToMany (mappedBy = "usuario")
+    @JoinColumn(nullable = true)
+    List<Documento> documentos;
+    @OneToMany (mappedBy = "usuario")
+    @JoinColumn (nullable = true)
+    List<Comentario> comentarios;
     
-    @OneToMany(mappedBy = "Usuario")
+    @OneToMany(mappedBy = "usuario")
     private List<Inscripcion> inscripciones;
     
     @ManyToOne
