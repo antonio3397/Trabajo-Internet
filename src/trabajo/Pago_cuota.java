@@ -19,7 +19,19 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Pago_cuota implements Serializable {
 
-    /**
+
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    private Integer cantidad_pagada;
+    
+    @ManyToOne
+    private Usuario usuarios;
+
+    
+        /**
      * @return the usuarios
      */
     public Usuario getUsuarios() {
@@ -32,16 +44,7 @@ public class Pago_cuota implements Serializable {
     public void setUsuarios(Usuario usuarios) {
         this.usuarios = usuarios;
     }
-
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private Integer cantidad_pagada;
     
-    @ManyToOne
-    private Usuario usuarios;
-
     public void setCantidad_pagada(Integer cantidad_pagada) {
         this.cantidad_pagada = cantidad_pagada;
     }
