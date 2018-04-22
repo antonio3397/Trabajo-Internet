@@ -6,6 +6,7 @@
 package trabajo;
 
 import java.io.Serializable;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,9 +21,8 @@ import javax.persistence.ManyToOne;
 public class Inscripcion implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @EmbeddedId
+    private InscripcionID id;
     
     @ManyToOne
     private Usuario usuario;
@@ -56,14 +56,6 @@ public class Inscripcion implements Serializable {
      */
     public void setEvento(Evento evento) {
         this.evento = evento;
-    }
-    
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     @Override
