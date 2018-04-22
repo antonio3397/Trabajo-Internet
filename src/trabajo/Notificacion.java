@@ -6,111 +6,131 @@
 package trabajo;
 
 import java.io.Serializable;
-import java.util.Objects;
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
-import static trabajo.Documento_.id;
+import javax.persistence.MapsId;
 
 /**
  *
- * @author franc
+ * @author anton
  */
-@Embeddable
+@Entity
 public class Notificacion implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    /*@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;*/
-    @ManyToOne
-    @PrimaryKeyJoinColumn
-    private Usuario usuario;
-    @ManyToOne
-    @PrimaryKeyJoinColumn
-    private Evento evento;
+    @EmbeddedId
+    private NotificacionID id;
+    
     @Column(nullable=false)
     private String titulo;
-    private String Texto;
+    private String texto;
     
+    @ManyToOne
+    @MapsId("usuario_id")
+    private Usuario usuario;
     
-    
-    /*public Long getId() {
-        return id;
-    }
+    @ManyToOne
+    @MapsId("evento_id")
+    private Evento evento;
 
-    public void setId(Long id) {
-        this.id = id;
-    }*/
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getTexto() {
-        return Texto;
-    }
-
-    public void setTexto(String Texto) {
-        this.Texto = Texto;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    public Evento getEvento() {
-        return evento;
-    }
-
-    public void setEvento(Evento evento) {
-        this.evento = evento;
-    }
-
-    
-    
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (getId() != null ? getId().hashCode() : 0);
         return hash;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Notificacion)) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Notificacion other = (Notificacion) obj;
-        if (!Objects.equals(this.usuario, other.usuario)) {
-            return false;
-        }
-        if (!Objects.equals(this.evento, other.evento)) {
+        Notificacion other = (Notificacion) object;
+        if ((this.getId() == null && other.getId() != null) || (this.getId() != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
     }
 
-    
-
     @Override
     public String toString() {
-        return "trabajo.Notificacion[ id=" + id + " ]";
+        return "trabajo.Notificacion[ id=" + getId() + " ]";
+    }
+
+    /**
+     * @return the id
+     */
+    public NotificacionID getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(NotificacionID id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the titulo
+     */
+    public String getTitulo() {
+        return titulo;
+    }
+
+    /**
+     * @param titulo the titulo to set
+     */
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    /**
+     * @return the texto
+     */
+    public String getTexto() {
+        return texto;
+    }
+
+    /**
+     * @param texto the texto to set
+     */
+    public void setTexto(String texto) {
+        this.texto = texto;
+    }
+
+    /**
+     * @return the usuario
+     */
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    /**
+     * @param usuario the usuario to set
+     */
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    /**
+     * @return the evento
+     */
+    public Evento getEvento() {
+        return evento;
+    }
+
+    /**
+     * @param evento the evento to set
+     */
+    public void setEvento(Evento evento) {
+        this.evento = evento;
     }
     
 }

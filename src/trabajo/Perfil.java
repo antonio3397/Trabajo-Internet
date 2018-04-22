@@ -94,5 +94,19 @@ public class Perfil implements Serializable {
     public void setUsuarios(List<Usuario> usuarios) {
         this.usuarios = usuarios;
     }
+
+    /**
+     * @return the priv
+     */
+    public List<Privilegios> getPriv() {
+        return priv;
+    }
+
+    /**
+     * @param priv the priv to set
+     */
+    public void setPriv(List<Privilegios> priv) {
+        this.priv = priv;
+    }
     
 }

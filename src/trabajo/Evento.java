@@ -46,6 +46,7 @@ public class Evento implements Serializable {
     private List<Comentario> comentarios;
     
     @OneToMany(mappedBy = "evento")
+    @JoinColumn(nullable=true)
     private List<Inscripcion> inscripciones;
     
     @ManyToOne
@@ -53,6 +54,10 @@ public class Evento implements Serializable {
     
     @ManyToOne
     private Usuario usuario;
+    
+    @OneToMany(mappedBy = "evento")
+    @JoinColumn(nullable=true)
+    private List<Notificacion> notificaciones;
     
     /**
      * @return the titulo
@@ -197,6 +202,48 @@ public class Evento implements Serializable {
     @Override
     public String toString() {
         return "trabajo.Evento[ id=" + id + " ]";
+    }
+
+    /**
+     * @return the seccion
+     */
+    public Seccion getSeccion() {
+        return seccion;
+    }
+
+    /**
+     * @param seccion the seccion to set
+     */
+    public void setSeccion(Seccion seccion) {
+        this.seccion = seccion;
+    }
+
+    /**
+     * @return the usuario
+     */
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    /**
+     * @param usuario the usuario to set
+     */
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    /**
+     * @return the notificaciones
+     */
+    public List<Notificacion> getNotificaciones() {
+        return notificaciones;
+    }
+
+    /**
+     * @param notificaciones the notificaciones to set
+     */
+    public void setNotificaciones(List<Notificacion> notificaciones) {
+        this.notificaciones = notificaciones;
     }
     
 }
