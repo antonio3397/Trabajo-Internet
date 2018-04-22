@@ -14,6 +14,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
@@ -66,14 +68,12 @@ public class Usuario implements Serializable {
     private String metodo_pago;
   
     @OneToMany (mappedBy = "usuario")
+    @JoinColumn(nullable=true)
     private List<Documento> documentos;
 
     @OneToMany (mappedBy = "usuario")
-    private List<Comentario> comentarios;
-    
-    @OneToMany(mappedBy = "usuario")
     @JoinColumn(nullable=true)
-    private List<Inscripcion> inscripciones;
+    private List<Comentario> comentarios;
     
     @ManyToOne
     private Perfil perfiles;
@@ -90,6 +90,11 @@ public class Usuario implements Serializable {
     @OneToMany(mappedBy="usuario")
     @JoinColumn(nullable=true)
     private List<Notificacion> notificaciones;
+    
+    @ManyToMany
+    @JoinTable(name="inscripcion",joinColumns = @JoinColumn(name = "id_usuario"),
+            inverseJoinColumns = @JoinColumn(name = "id_evento"))
+    private List<Evento> inscripciones;
 
     public Long getId() {
         return id;
@@ -416,20 +421,6 @@ public class Usuario implements Serializable {
      */
     public void setComentarios(List<Comentario> comentarios) {
         this.comentarios = comentarios;
-    }
-
-    /**
-     * @return the inscripciones
-     */
-    public List<Inscripcion> getInscripciones() {
-        return inscripciones;
-    }
-
-    /**
-     * @param inscripciones the inscripciones to set
-     */
-    public void setInscripciones(List<Inscripcion> inscripciones) {
-        this.inscripciones = inscripciones;
     }
 
     /**

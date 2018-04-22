@@ -14,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
@@ -43,10 +44,6 @@ public class Evento implements Serializable {
     @OneToMany (mappedBy = "evento")    
     private List<Comentario> comentarios;
     
-    @OneToMany(mappedBy = "evento")
-    @JoinColumn(nullable=true)
-    private List<Inscripcion> inscripciones;
-    
     @ManyToOne
     private Seccion seccion;
     
@@ -56,6 +53,9 @@ public class Evento implements Serializable {
     @OneToMany(mappedBy = "evento")
     @JoinColumn(nullable=true)
     private List<Notificacion> notificaciones;
+    
+    @ManyToMany
+    private List<Usuario> usuarios;
     
     /**
      * @return the titulo
@@ -153,20 +153,6 @@ public class Evento implements Serializable {
      */
     public void setComentarios(List<Comentario> comentarios) {
         this.comentarios = comentarios;
-    }
-
-    /**
-     * @return the inscripciones
-     */
-    public List<Inscripcion> getInscripciones() {
-        return inscripciones;
-    }
-
-    /**
-     * @param inscripciones the inscripciones to set
-     */
-    public void setInscripciones(List<Inscripcion> inscripciones) {
-        this.inscripciones = inscripciones;
     }
 
     public Long getId() {
