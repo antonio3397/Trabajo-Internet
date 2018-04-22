@@ -11,6 +11,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 /**
@@ -27,7 +30,10 @@ public class Perfil implements Serializable {
     
     @OneToMany (mappedBy="perfiles")
     private List<Usuario> usuarios;
-
+    @ManyToMany
+    @JoinTable(name="privilegios_asociados",joinColumns = @JoinColumn(name = "perfil_user"),
+            inverseJoinColumns = @JoinColumn(name = "privilegios_user"))
+    private List<Privilegios> priv;
     public Long getId() {
         return getRol();
     }

@@ -19,6 +19,17 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Inscripcion implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    
+    @ManyToOne
+    private Usuario usuario;
+    
+    @ManyToOne
+    private Evento evento;
+
     /**
      * @return the usuario
      */
@@ -46,19 +57,7 @@ public class Inscripcion implements Serializable {
     public void setEvento(Evento evento) {
         this.evento = evento;
     }
-
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
     
-     
-    @ManyToOne
-    private Usuario usuario;
-    
-    @ManyToOne
-    private Evento evento;
-
     public Long getId() {
         return id;
     }

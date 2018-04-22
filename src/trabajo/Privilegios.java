@@ -6,11 +6,13 @@
 package trabajo;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 /**
  *
@@ -25,7 +27,9 @@ public class Privilegios implements Serializable {
     private Long id;
     @Column(nullable=false)
     private String nombre;
-
+    @ManyToMany(mappedBy = "priv")
+    private List <Perfil> perfil;
+    
     public Long getId() {
         return id;
     }
