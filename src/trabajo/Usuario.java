@@ -80,6 +80,12 @@ public class Usuario implements Serializable {
     
     @OneToMany (mappedBy="perfiles")
     private List<Pago_cuota> pago;
+    
+    @ManyToOne
+    private Seccion seccion;
+    
+    @OneToMany(mappedBy="usuario")
+    private List<Evento> eventos;
 
     public Long getId() {
         return id;
