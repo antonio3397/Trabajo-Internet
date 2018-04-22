@@ -20,6 +20,33 @@ import javax.persistence.Temporal;
 @Entity
 public class Evento implements Serializable {
 
+    
+    
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    @Column(nullable = false)
+    private String titulo;
+    @Column (nullable = false)
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date fecha;
+    @Column (nullable = false)
+    private String localizacion;
+    private String descripcion;
+    private Integer precio;
+  
+    @OneToMany(mappedBy = "evento")
+    @JoinColumn(nullable = true)
+    private List<Documento> documentos;
+  
+    @OneToMany (mappedBy = "evento")
+    @JoinColumn (nullable = true)
+    private List<Comentario> comentarios;
+    
+    @OneToMany(mappedBy = "evento")
+    private List<Inscripcion> inscripciones;
+    
     /**
      * @return the titulo
      */
@@ -131,32 +158,6 @@ public class Evento implements Serializable {
     public void setInscripciones(List<Inscripcion> inscripciones) {
         this.inscripciones = inscripciones;
     }
-
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    @Column(nullable = false)
-    private String titulo;
-    @Column (nullable = false)
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date fecha;
-    @Column (nullable = false)
-    private String localizacion;
-    private String descripcion;
-    private Integer precio;
-  
-    @OneToMany(mappedBy = "evento")
-    @JoinColumn(nullable = true)
-    private List<Documento> documentos;
-  
-    @OneToMany (mappedBy = "evento")
-    @JoinColumn (nullable = true)
-    private List<Comentario> comentarios;
-    
-    @OneToMany(mappedBy = "evento")
-    private List<Inscripcion> inscripciones;
-
 
     public Long getId() {
         return id;
