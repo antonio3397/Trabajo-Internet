@@ -21,6 +21,8 @@ import javax.persistence.Temporal;
 @Entity
 public class Evento implements Serializable {
 
+    
+    
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -45,13 +47,125 @@ public class Evento implements Serializable {
     
     @OneToMany(mappedBy = "evento")
     private List<Inscripcion> inscripciones;
-
+    
     @ManyToOne
     private Seccion seccion;
     
     @ManyToOne
     private Usuario usuario;
     
+    /**
+     * @return the titulo
+     */
+    public String getTitulo() {
+        return titulo;
+    }
+
+    /**
+     * @param titulo the titulo to set
+     */
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    /**
+     * @return the fecha
+     */
+    public Date getFecha() {
+        return fecha;
+    }
+
+    /**
+     * @param fecha the fecha to set
+     */
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    /**
+     * @return the localizacion
+     */
+    public String getLocalizacion() {
+        return localizacion;
+    }
+
+    /**
+     * @param localizacion the localizacion to set
+     */
+    public void setLocalizacion(String localizacion) {
+        this.localizacion = localizacion;
+    }
+
+    /**
+     * @return the descripcion
+     */
+    public String getDescripcion() {
+        return descripcion;
+    }
+    
+    /**
+     * @param descripcion the descripcion to set
+     */
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    /**
+     * @return the precio
+     */
+    public Integer getPrecio() {
+        return precio;
+    }
+
+    /**
+     * @param precio the precio to set
+     */
+    public void setPrecio(Integer precio) {
+        this.precio = precio;
+    }
+
+    /**
+     * @return the documentos
+     */
+    public List<Documento> getDocumentos() {
+        return documentos;
+    }
+
+    /**
+     * @param documentos the documentos to set
+     */
+    public void setDocumentos(List<Documento> documentos) {
+        this.documentos = documentos;
+    }
+
+    /**
+     * @return the comentarios
+     */
+    public List<Comentario> getComentarios() {
+        return comentarios;
+    }
+
+    /**
+     * @param comentarios the comentarios to set
+     */
+    public void setComentarios(List<Comentario> comentarios) {
+        this.comentarios = comentarios;
+    }
+
+    /**
+     * @return the inscripciones
+     */
+    public List<Inscripcion> getInscripciones() {
+        return inscripciones;
+    }
+
+    /**
+     * @param inscripciones the inscripciones to set
+     */
+    public void setInscripciones(List<Inscripcion> inscripciones) {
+        this.inscripciones = inscripciones;
+    }
+
     public Long getId() {
         return id;
     }

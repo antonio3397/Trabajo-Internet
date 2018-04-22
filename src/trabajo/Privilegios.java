@@ -6,61 +6,30 @@
 package trabajo;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 
 /**
  *
  * @author anton
  */
 @Entity
-public class Pago_cuota implements Serializable {
-
-
+public class Privilegios implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Integer cantidad_pagada;
-    private String Tipo_pago;
-
-    public void setTipo_pago(String Tipo_pago) {
-        this.Tipo_pago = Tipo_pago;
-    }
-
-    public String getTipo_pago() {
-        return Tipo_pago;
-    }
-    @ManyToOne
-    private Usuario usuarios;
-
+    @Column(nullable=false)
+    private String nombre;
+    @ManyToMany(mappedBy = "priv")
+    private List <Perfil> perfil;
     
-        /**
-     * @return the usuarios
-     */
-    public Usuario getUsuarios() {
-        return usuarios;
-    }
-
-    /**
-     * @param usuarios the usuarios to set
-     */
-    public void setUsuarios(Usuario usuarios) {
-        this.usuarios = usuarios;
-    }
-    
-    public void setCantidad_pagada(Integer cantidad_pagada) {
-        this.cantidad_pagada = cantidad_pagada;
-    }
-
-    public Integer getCantidad_pagada() {
-        return cantidad_pagada;
-    }
-
     public Long getId() {
         return id;
     }
@@ -79,10 +48,10 @@ public class Pago_cuota implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Pago_cuota)) {
+        if (!(object instanceof Privilegios)) {
             return false;
         }
-        Pago_cuota other = (Pago_cuota) object;
+        Privilegios other = (Privilegios) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -91,7 +60,21 @@ public class Pago_cuota implements Serializable {
 
     @Override
     public String toString() {
-        return "trabajo.Pago_cuota[ id=" + id + " ]";
+        return "trabajo.Privilegios[ id=" + id + " ]";
+    }
+
+    /**
+     * @return the nombre
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * @param nombre the nombre to set
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
     
 }

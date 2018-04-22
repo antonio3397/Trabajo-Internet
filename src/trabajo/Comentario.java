@@ -36,7 +36,61 @@ public class Comentario implements Serializable {
     @ManyToOne
     private Usuario usuario;
     
+     /**
+     * @return the texto
+     */
+    public String getTexto() {
+        return texto;
+    }
 
+    /**
+     * @param texto the texto to set
+     */
+    public void setTexto(String texto) {
+        this.texto = texto;
+    }
+
+    /**
+     * @return the fecha_creacion
+     */
+    public Date getFecha_creacion() {
+        return fecha_creacion;
+    }
+
+    /**
+     * @param fecha_creacion the fecha_creacion to set
+     */
+    public void setFecha_creacion(Date fecha_creacion) {
+        this.fecha_creacion = fecha_creacion;
+    }
+
+    /**
+     * @return the evento
+     */
+    public Evento getEvento() {
+        return evento;
+    }
+
+    /**
+     * @param evento the evento to set
+     */
+    public void setEvento(Evento evento) {
+        this.evento = evento;
+    }
+
+    /**
+     * @return the usuario
+     */
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    /**
+     * @param usuario the usuario to set
+     */
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
     public Long getId() {
         return id;
     }

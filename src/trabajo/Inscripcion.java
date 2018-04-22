@@ -24,13 +24,40 @@ public class Inscripcion implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-     
     @ManyToOne
     private Usuario usuario;
     
     @ManyToOne
     private Evento evento;
 
+    /**
+     * @return the usuario
+     */
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    /**
+     * @param usuario the usuario to set
+     */
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    /**
+     * @return the evento
+     */
+    public Evento getEvento() {
+        return evento;
+    }
+
+    /**
+     * @param evento the evento to set
+     */
+    public void setEvento(Evento evento) {
+        this.evento = evento;
+    }
+    
     public Long getId() {
         return id;
     }
