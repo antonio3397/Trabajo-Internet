@@ -6,10 +6,13 @@
 package trabajo;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 /*
  *
@@ -22,6 +25,15 @@ public class Seccion implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String Nombre;
+    private Integer Edad_minima;
+    private Integer Edad_maxima;
+    
+    @OneToMany(mappedBy = "seccion")
+    private List<Usuario> usuarios;
+    
+    @OneToMany(mappedBy = "seccion")
+    private List<Evento> eventos;
 
     public Long getId() {
         return id;
