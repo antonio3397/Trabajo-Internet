@@ -21,6 +21,76 @@ import javax.persistence.OneToMany;
 @Entity
 public class Seccion implements Serializable {
 
+    /**
+     * @return the Nombre
+     */
+    public String getNombre() {
+        return Nombre;
+    }
+
+    /**
+     * @param Nombre the Nombre to set
+     */
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
+    }
+
+    /**
+     * @return the Edad_minima
+     */
+    public Integer getEdad_minima() {
+        return Edad_minima;
+    }
+
+    /**
+     * @param Edad_minima the Edad_minima to set
+     */
+    public void setEdad_minima(Integer Edad_minima) {
+        this.Edad_minima = Edad_minima;
+    }
+
+    /**
+     * @return the Edad_maxima
+     */
+    public Integer getEdad_maxima() {
+        return Edad_maxima;
+    }
+
+    /**
+     * @param Edad_maxima the Edad_maxima to set
+     */
+    public void setEdad_maxima(Integer Edad_maxima) {
+        this.Edad_maxima = Edad_maxima;
+    }
+
+    /**
+     * @return the usuarios
+     */
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    /**
+     * @param usuarios the usuarios to set
+     */
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
+
+    /**
+     * @return the eventos
+     */
+    public List<Evento> getEventos() {
+        return eventos;
+    }
+
+    /**
+     * @param eventos the eventos to set
+     */
+    public void setEventos(List<Evento> eventos) {
+        this.eventos = eventos;
+    }
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

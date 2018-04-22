@@ -6,11 +6,10 @@
 package trabajo;
 
 import java.io.Serializable;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 
 /**
  *
@@ -20,14 +19,15 @@ import javax.persistence.ManyToOne;
 public class Inscripcion implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @EmbeddedId
+    private InscripcionID id;
     
     @ManyToOne
+    @MapsId("usuario_id")
     private Usuario usuario;
     
     @ManyToOne
+    @MapsId("evento_id")
     private Evento evento;
 
     /**
@@ -57,19 +57,11 @@ public class Inscripcion implements Serializable {
     public void setEvento(Evento evento) {
         this.evento = evento;
     }
-    
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (getId() != null ? getId().hashCode() : 0);
         return hash;
     }
 
@@ -80,7 +72,7 @@ public class Inscripcion implements Serializable {
             return false;
         }
         Inscripcion other = (Inscripcion) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.getId() == null && other.getId() != null) || (this.getId() != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -88,7 +80,21 @@ public class Inscripcion implements Serializable {
 
     @Override
     public String toString() {
-        return "trabajo.Inscripcion[ id=" + id + " ]";
+        return "trabajo.Inscripcion[ id=" + getId() + " ]";
+    }
+
+    /**
+     * @return the id
+     */
+    public InscripcionID getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(InscripcionID id) {
+        this.id = id;
     }
     
 }

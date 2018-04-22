@@ -67,10 +67,12 @@ public class Usuario implements Serializable {
   
     @OneToMany (mappedBy = "usuario")
     private List<Documento> documentos;
-    @OneToMany (mappedBy = "usuario")    
+
+    @OneToMany (mappedBy = "usuario")
     private List<Comentario> comentarios;
     
     @OneToMany(mappedBy = "usuario")
+    @JoinColumn(nullable=true)
     private List<Inscripcion> inscripciones;
     
     @ManyToOne
@@ -84,6 +86,10 @@ public class Usuario implements Serializable {
     
     @OneToMany(mappedBy="usuario")
     private List<Evento> eventos;
+    
+    @OneToMany(mappedBy="usuario")
+    @JoinColumn(nullable=true)
+    private List<Notificacion> notificaciones;
 
     public Long getId() {
         return id;
@@ -452,6 +458,48 @@ public class Usuario implements Serializable {
      */
     public void setPago(List<Pago_cuota> pago) {
         this.pago = pago;
+    }
+
+    /**
+     * @return the seccion
+     */
+    public Seccion getSeccion() {
+        return seccion;
+    }
+
+    /**
+     * @param seccion the seccion to set
+     */
+    public void setSeccion(Seccion seccion) {
+        this.seccion = seccion;
+    }
+
+    /**
+     * @return the eventos
+     */
+    public List<Evento> getEventos() {
+        return eventos;
+    }
+
+    /**
+     * @param eventos the eventos to set
+     */
+    public void setEventos(List<Evento> eventos) {
+        this.eventos = eventos;
+    }
+
+    /**
+     * @return the notificaciones
+     */
+    public List<Notificacion> getNotificaciones() {
+        return notificaciones;
+    }
+
+    /**
+     * @param notificaciones the notificaciones to set
+     */
+    public void setNotificaciones(List<Notificacion> notificaciones) {
+        this.notificaciones = notificaciones;
     }
     
 }
