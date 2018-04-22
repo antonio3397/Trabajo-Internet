@@ -23,8 +23,6 @@ import javax.persistence.TemporalType;
 @Entity
 public class Pago_cuota implements Serializable {
 
-
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -44,7 +42,24 @@ public class Pago_cuota implements Serializable {
     }
     @Column(nullable=false)
     private String Tipo_pago;
+    
+    @ManyToOne
+    private Usuario usuarios;
+    
+     /**
+     * @return the fecha_del_pago
+     */
+    public Date getFecha_del_pago() {
+        return fecha_del_pago;
+    }
 
+    /**
+     * @param fecha_del_pago the fecha_del_pago to set
+     */
+    public void setFecha_del_pago(Date fecha_del_pago) {
+        this.fecha_del_pago = fecha_del_pago;
+    }
+    
     public void setTipo_pago(String Tipo_pago) {
         this.Tipo_pago = Tipo_pago;
     }
@@ -52,10 +67,6 @@ public class Pago_cuota implements Serializable {
     public String getTipo_pago() {
         return Tipo_pago;
     }
-    @ManyToOne
-    private Usuario usuarios;
-
-    
         /**
      * @return the usuarios
      */

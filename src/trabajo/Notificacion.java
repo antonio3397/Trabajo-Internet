@@ -25,6 +25,7 @@ public class Notificacion implements Serializable {
     
     @Column(nullable=false)
     private String titulo;
+    @Column(nullable=false)
     private String texto;
     
     @ManyToOne
