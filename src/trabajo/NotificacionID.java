@@ -6,11 +6,8 @@
 package trabajo;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Embeddable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 /**
  *
@@ -20,41 +17,41 @@ import javax.persistence.Id;
 public class NotificacionID implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private Long id;
     private Long usuario_id;
     private Long evento_id;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    @Override
+    public String toString() {
+        return "NotificacionID{" + "usuario_id=" + usuario_id + ", evento_id=" + evento_id + '}';
     }
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        int hash = 3;
+        hash = 23 * hash + Objects.hashCode(this.usuario_id);
+        hash = 23 * hash + Objects.hashCode(this.evento_id);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof NotificacionID)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        NotificacionID other = (NotificacionID) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final NotificacionID other = (NotificacionID) obj;
+        if (!Objects.equals(this.usuario_id, other.usuario_id)) {
+            return false;
+        }
+        if (!Objects.equals(this.evento_id, other.evento_id)) {
             return false;
         }
         return true;
-    }
-
-    @Override
-    public String toString() {
-        return "trabajo.NotificacionID[ id=" + id + " ]";
     }
 
     /**
