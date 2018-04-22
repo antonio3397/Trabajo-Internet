@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 
@@ -32,8 +33,10 @@ public class Comentario implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha_creacion;
     @ManyToOne
+    @JoinColumn (nullable = true)
     private Evento evento;
     @ManyToOne
+    @JoinColumn (nullable = true)
     private Usuario usuario;
     
      /**

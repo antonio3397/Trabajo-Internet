@@ -66,11 +66,9 @@ public class Usuario implements Serializable {
     private String metodo_pago;
   
     @OneToMany (mappedBy = "usuario")
-    @JoinColumn(nullable = true)
     private List<Documento> documentos;
-    
+
     @OneToMany (mappedBy = "usuario")
-    @JoinColumn (nullable = true)
     private List<Comentario> comentarios;
     
     @OneToMany(mappedBy = "usuario")

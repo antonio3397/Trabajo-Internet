@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 
@@ -30,8 +31,10 @@ public class Documento implements Serializable {
     private String estado;
     private String tipo;
     @ManyToOne
+    @JoinColumn(nullable = true)
     private Evento evento;
     @ManyToOne 
+    @JoinColumn(nullable = true)
     private Usuario usuario;
     
     /**
