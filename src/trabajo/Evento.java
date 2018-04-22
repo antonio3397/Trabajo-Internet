@@ -14,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
@@ -46,6 +47,9 @@ public class Evento implements Serializable {
     
     @OneToMany(mappedBy = "evento")
     private List<Inscripcion> inscripciones;
+    
+    @ManyToOne
+    private Usuario usuario;
     
     /**
      * @return the titulo

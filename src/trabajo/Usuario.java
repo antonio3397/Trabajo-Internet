@@ -68,6 +68,7 @@ public class Usuario implements Serializable {
     @OneToMany (mappedBy = "usuario")
     @JoinColumn(nullable = true)
     private List<Documento> documentos;
+    
     @OneToMany (mappedBy = "usuario")
     @JoinColumn (nullable = true)
     private List<Comentario> comentarios;
@@ -80,6 +81,10 @@ public class Usuario implements Serializable {
     
     @OneToMany (mappedBy="usuarios")
     private List<Pago_cuota> pago;
+    
+    @OneToMany (mappedBy="usuario")
+    @JoinColumn (nullable = true)
+    private List<Evento> eventos;
 
     public Long getId() {
         return id;
