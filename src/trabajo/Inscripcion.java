@@ -8,10 +8,8 @@ package trabajo;
 import java.io.Serializable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 
 /**
  *
@@ -25,9 +23,11 @@ public class Inscripcion implements Serializable {
     private InscripcionID id;
     
     @ManyToOne
+    @MapsId("usuario_id")
     private Usuario usuario;
     
     @ManyToOne
+    @MapsId("evento_id")
     private Evento evento;
 
     /**

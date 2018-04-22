@@ -51,5 +51,33 @@ public class InscripcionID implements Serializable {
     public String toString() {
         return "trabajo.InscripcionID[ id=" + id + " ]";
     }
+
+    /**
+     * @return the usuario_id
+     */
+    public Long getUsuario_id() {
+        return usuario_id;
+    }
+
+    /**
+     * @param usuario_id the usuario_id to set
+     */
+    public void setUsuario_id(Long usuario_id) {
+        this.usuario_id = usuario_id;
+    }
+
+    /**
+     * @return the evento_id
+     */
+    public Long getEvento_id() {
+        return evento_id;
+    }
+
+    /**
+     * @param evento_id the evento_id to set
+     */
+    public void setEvento_id(Long evento_id) {
+        this.evento_id = evento_id;
+    }
     
 }
