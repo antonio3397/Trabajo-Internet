@@ -22,7 +22,21 @@ import javax.persistence.Temporal;
 @Entity
 public class Comentario implements Serializable {
 
-    /**
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    @Column(nullable = false)
+    private String texto;
+    @Column(nullable = false)
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date fecha_creacion;
+    @ManyToOne
+    private Evento evento;
+    @ManyToOne
+    private Usuario usuario;
+    
+     /**
      * @return the texto
      */
     public String getTexto() {
@@ -77,22 +91,6 @@ public class Comentario implements Serializable {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    @Column(nullable = false)
-    private String texto;
-    @Column(nullable = false)
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date fecha_creacion;
-    @ManyToOne
-    private Evento evento;
-    @ManyToOne
-    private Usuario usuario;
-    
-
     public Long getId() {
         return id;
     }
