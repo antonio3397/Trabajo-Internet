@@ -38,11 +38,9 @@ public class Evento implements Serializable {
     private Integer precio;
   
     @OneToMany(mappedBy = "evento")
-    @JoinColumn(nullable = true)
     private List<Documento> documentos;
   
-    @OneToMany (mappedBy = "evento")
-    @JoinColumn (nullable = true)
+    @OneToMany (mappedBy = "evento")    
     private List<Comentario> comentarios;
     
     @OneToMany(mappedBy = "evento")
