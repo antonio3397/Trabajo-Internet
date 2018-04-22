@@ -21,6 +21,19 @@ import javax.persistence.Temporal;
 @Entity
 public class Documento implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date fecha_entrega;
+    private String estado;
+    private String tipo;
+    @ManyToOne
+    private Evento evento;
+    @ManyToOne 
+    private Usuario usuario;
+    
     /**
      * @return the fecha_entrega
      */
@@ -90,20 +103,6 @@ public class Documento implements Serializable {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date fecha_entrega;
-    private String estado;
-    private String tipo;
-    @ManyToOne
-    private Evento evento;
-    @ManyToOne 
-    private Usuario usuario;
-    
 
     public Long getId() {
         return id;

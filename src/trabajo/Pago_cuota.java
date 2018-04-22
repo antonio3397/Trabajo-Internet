@@ -26,7 +26,15 @@ public class Pago_cuota implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Integer cantidad_pagada;
-    
+    private String Tipo_pago;
+
+    public void setTipo_pago(String Tipo_pago) {
+        this.Tipo_pago = Tipo_pago;
+    }
+
+    public String getTipo_pago() {
+        return Tipo_pago;
+    }
     @ManyToOne
     private Usuario usuarios;
 
