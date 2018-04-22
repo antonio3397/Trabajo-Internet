@@ -47,6 +47,8 @@ public class Evento implements Serializable {
     @OneToMany(mappedBy = "evento")
     private List<Inscripcion> inscripciones;
     
+    
+    
     /**
      * @return the titulo
      */
