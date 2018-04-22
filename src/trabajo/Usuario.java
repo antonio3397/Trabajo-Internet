@@ -62,7 +62,9 @@ public class Usuario implements Serializable {
     private Date fecha_baja;
     @Column(nullable=false)
     private Integer cuota_total;
+    @Column(nullable=false)
     private Integer telefono;
+    @Column(nullable=false)
     private Integer movil;
     private String responsable_legal;
     private String metodo_pago;
@@ -94,6 +96,7 @@ public class Usuario implements Serializable {
     @ManyToMany
     @JoinTable(name="inscripcion",joinColumns = @JoinColumn(name = "id_usuario"),
             inverseJoinColumns = @JoinColumn(name = "id_evento"))
+    @JoinColumn(nullable=true)
     private List<Evento> inscripciones;
 
     public Long getId() {
@@ -102,6 +105,20 @@ public class Usuario implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+    
+        /**
+     * @return the inscripciones
+     */
+    public List<Evento> getInscripciones() {
+        return inscripciones;
+    }
+
+    /**
+     * @param inscripciones the inscripciones to set
+     */
+    public void setInscripciones(List<Evento> inscripciones) {
+        this.inscripciones = inscripciones;
     }
 
     @Override
