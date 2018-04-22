@@ -6,44 +6,24 @@
 package trabajo;
 
 import java.io.Serializable;
-import java.util.List;
-import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 
 /**
  *
  * @author anton
  */
-@Entity
-public class Privilegios implements Serializable {
-
-    /**
-     * @return the perfil
-     */
-    public List <Perfil> getPerfil() {
-        return perfil;
-    }
-
-    /**
-     * @param perfil the perfil to set
-     */
-    public void setPerfil(List <Perfil> perfil) {
-        this.perfil = perfil;
-    }
+@Embeddable
+public class NotificacionID implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(nullable=false)
-    private String nombre;
-    @ManyToMany(mappedBy = "priv")
-    private List <Perfil> perfil;
-    
+    private Long usuario_id;
+    private Long evento_id;
+
     public Long getId() {
         return id;
     }
@@ -62,10 +42,10 @@ public class Privilegios implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Privilegios)) {
+        if (!(object instanceof NotificacionID)) {
             return false;
         }
-        Privilegios other = (Privilegios) object;
+        NotificacionID other = (NotificacionID) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -74,21 +54,35 @@ public class Privilegios implements Serializable {
 
     @Override
     public String toString() {
-        return "trabajo.Privilegios[ id=" + id + " ]";
+        return "trabajo.NotificacionID[ id=" + id + " ]";
     }
 
     /**
-     * @return the nombre
+     * @return the usuario_id
      */
-    public String getNombre() {
-        return nombre;
+    public Long getUsuario_id() {
+        return usuario_id;
     }
 
     /**
-     * @param nombre the nombre to set
+     * @param usuario_id the usuario_id to set
      */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setUsuario_id(Long usuario_id) {
+        this.usuario_id = usuario_id;
+    }
+
+    /**
+     * @return the evento_id
+     */
+    public Long getEvento_id() {
+        return evento_id;
+    }
+
+    /**
+     * @param evento_id the evento_id to set
+     */
+    public void setEvento_id(Long evento_id) {
+        this.evento_id = evento_id;
     }
     
 }
