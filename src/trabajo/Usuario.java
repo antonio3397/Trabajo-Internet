@@ -66,7 +66,6 @@ public class Usuario implements Serializable {
     private Integer telefono;
     @Column(nullable=false)
     private Integer movil;
-    private String responsable_legal;
     private String metodo_pago;
   
     @OneToMany (mappedBy = "usuario")
@@ -98,6 +97,10 @@ public class Usuario implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "id_evento"))
     @JoinColumn(nullable=true)
     private List<Evento> inscripciones;
+    
+    @ManyToOne
+    @JoinColumn(nullable=true)
+    private Responsable_Legal responsable;
 
     public Long getId() {
         return id;
@@ -385,20 +388,6 @@ public class Usuario implements Serializable {
     }
 
     /**
-     * @return the responsable_legal
-     */
-    public String getResponsable_legal() {
-        return responsable_legal;
-    }
-
-    /**
-     * @param responsable_legal the responsable_legal to set
-     */
-    public void setResponsable_legal(String responsable_legal) {
-        this.responsable_legal = responsable_legal;
-    }
-
-    /**
      * @return the metodo_pago
      */
     public String getMetodo_pago() {
@@ -508,6 +497,20 @@ public class Usuario implements Serializable {
      */
     public void setNotificaciones(List<Notificacion> notificaciones) {
         this.notificaciones = notificaciones;
+    }
+
+    /**
+     * @return the responsable
+     */
+    public Responsable_Legal getResponsable() {
+        return responsable;
+    }
+
+    /**
+     * @param responsable the responsable to set
+     */
+    public void setResponsable(Responsable_Legal responsable) {
+        this.responsable = responsable;
     }
     
 }
