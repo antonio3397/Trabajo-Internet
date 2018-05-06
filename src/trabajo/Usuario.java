@@ -18,6 +18,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -66,9 +67,12 @@ public class Usuario implements Serializable {
     private Integer telefono;
     @Column(nullable=false)
     private Integer movil;
-    private String responsable_legal;
     private String metodo_pago;
   
+    @OneToOne
+    @JoinColumn(nullable = true)
+    private Responsable_legal mama;
+    
     @OneToMany (mappedBy = "usuario")
     @JoinColumn(nullable=true)
     private List<Documento> documentos;
@@ -382,20 +386,6 @@ public class Usuario implements Serializable {
      */
     public void setMovil(Integer movil) {
         this.movil = movil;
-    }
-
-    /**
-     * @return the responsable_legal
-     */
-    public String getResponsable_legal() {
-        return responsable_legal;
-    }
-
-    /**
-     * @param responsable_legal the responsable_legal to set
-     */
-    public void setResponsable_legal(String responsable_legal) {
-        this.responsable_legal = responsable_legal;
     }
 
     /**

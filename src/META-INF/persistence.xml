@@ -11,6 +11,7 @@
     <class>trabajo.Inscripcion</class>
     <class>trabajo.Seccion</class>
     <class>trabajo.Privilegios</class>
+    <class>trabajo.Responsable_legal</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/BBDD"/>
       <property name="javax.persistence.jdbc.user" value="antonio3397"/>
