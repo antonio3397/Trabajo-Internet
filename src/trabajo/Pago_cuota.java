@@ -46,20 +46,7 @@ public class Pago_cuota implements Serializable {
     @ManyToOne
     private Usuario usuarios;
     
-     /**
-     * @return the fecha_del_pago
-     */
-    public Date getFecha_del_pago() {
-        return fecha_del_pago;
-    }
-
-    /**
-     * @param fecha_del_pago the fecha_del_pago to set
-     */
-    public void setFecha_del_pago(Date fecha_del_pago) {
-        this.fecha_del_pago = fecha_del_pago;
-    }
-    
+       
     public void setTipo_pago(String Tipo_pago) {
         this.Tipo_pago = Tipo_pago;
     }
